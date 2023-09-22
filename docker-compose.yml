@@ -11,6 +11,3 @@ services:
         target: /home/app/sistema_teste/config/master.key
     ports:
       - "8001:80"
-# secrets:
-#   master_key:
-#     file: ./config/master.key
