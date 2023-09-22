@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool:     <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host:     <%= ENV.fetch("DB_HOST") { Rails.application.credentials.dig(Rails.env.to_sym, :host) } %>
+  username: <%= ENV.fetch("DB_USER_NAME") { Rails.application.credentials.dig(Rails.env.to_sym, :user) }  %>
+  password: <%= ENV.fetch("DB_PASSWORD") { Rails.application.credentials.dig(Rails.env.to_sym, :password) } %>
+  port:     <%= ENV.fetch("DBPORT") { 5432 } %>
+
+development:
+  <<: *default
+  database: <%= ENV.fetch("DBNAME") { "teste_portainer_development" } %>
+
+test:
+  <<: *default
+  database: <%= ENV.fetch("DBTEST") { "teste_portainer_test" } %>
+
+production:
+  <<: *default
+  database: <%= ENV.fetch("DBTEST") { "teste_portainer_production" } %>
