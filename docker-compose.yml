@@ -11,10 +11,11 @@ services:
     #     target: /home/app/sistema_teste/config/master.key
     ports:
       - "8001:80"
+    networks:
+      - sis_net
 # secrets:
 #   master_key:
 #     file: ./config/master.key
 networks:
-  bridge:
-    name: bridge
-    external: true
+  sis_net:
+    driver: bridge
