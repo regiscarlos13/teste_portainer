@@ -18,9 +18,10 @@ COPY --chown=app:app Gemfile Gemfile.lock /
 COPY --chown=app:app . .
 RUN bundle install
 RUN bin/rails db:create 
-RUN bin/rails db:migrate 
+RUN bin/rails db:migrate
 
-RUN SECRET_KEY_BASE='bin/rails secret'
+RUN SECRET_KEY_BASE=`bin/rails secret` \
+bin/rails assets:precompile
 
 #END:app
 
