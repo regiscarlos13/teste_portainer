@@ -6,11 +6,15 @@ services:
     container_name: sistema_teste
     volumes:
       - ./log:/home/app/sistema_teste/log
-    # secrets:
-    #   - source: master_key
-    #     target: /home/app/sistema_teste/config/master.key
+    secrets:
+      - source: master_key
+        target: /home/app/sistema_teste/config/master.key
     ports:
       - "8001:80"
-# secrets:
-#   master_key:
-#     file: ./config/master.key
+secrets:
+  master_key:
+    file: ./config/master.key
+networks:
+  bridge:
+    name: bridge
+    external: true
