@@ -18,7 +18,7 @@ COPY --chown=app:app Gemfile Gemfile.lock /
 COPY --chown=app:app . .
 RUN bundle install
 
-RUN SECRET_KEY_BASE='bin/rails secret'
+RUN SECRET_KEY_BASE=66d3052c8cde46bb449ac08acfb7b16d47b17d5713a100c970e6db7156e51b94fc15611120093c1dcbb03013ba2d5de9b9aea051999b18836628522b636cf38e
 
 #END:app
 
